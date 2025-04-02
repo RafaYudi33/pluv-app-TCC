@@ -1,0 +1,12 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://rafaeltanaka:root123@teste.sjcrl.mongodb.net/tcc
+      database: tcc
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+logging:
+  level:
+    org.springframework.data.mongodb: DEBUG
