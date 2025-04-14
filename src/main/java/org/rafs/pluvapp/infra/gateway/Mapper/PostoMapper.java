@@ -23,19 +23,19 @@ public class PostoMapper {
         );
     }
 
-    public Posto toPostoDomainObj(PostoEntity postoEntity){
+    public Posto toPostoDomainObj(PostoEntity postoEntityRelational){
         return new Posto(
-                postoEntity.getId(),
-                postoEntity.getNome(),
-                postoEntity.getMunicipio(),
-                postoEntity.getBacia(),
-                postoEntity.getAltitude(),
-                postoEntity.getLatitude(),
-                postoEntity.getLongitude(),
-                postoEntity.getAno_final(),
-                postoEntity.getAno_final(),
-                postoEntity.getIntervalo(),
-                postoEntity.getConsistencia()
+                postoEntityRelational.getId(),
+                postoEntityRelational.getNome(),
+                postoEntityRelational.getMunicipio(),
+                postoEntityRelational.getBacia(),
+                postoEntityRelational.getAltitude(),
+                postoEntityRelational.getLatitude(),
+                postoEntityRelational.getLongitude(),
+                postoEntityRelational.getAno_final(),
+                postoEntityRelational.getAno_final(),
+                postoEntityRelational.getIntervalo(),
+                postoEntityRelational.getConsistencia()
                 );
     }
 
@@ -52,6 +52,22 @@ public class PostoMapper {
                 postoDocument.getAno_final(),
                 postoDocument.getIntervalo(),
                 postoDocument.getConsistencia()
+        );
+    }
+
+    public Posto toPostoDomainObj(org.rafs.pluvapp.infra.persistence.entity.mysqlwjson.PostoEntity postoEntityMysqlJson){
+        return new Posto(
+                postoEntityMysqlJson.getId(),
+                postoEntityMysqlJson.getNome(),
+                postoEntityMysqlJson.getMunicipio(),
+                postoEntityMysqlJson.getBacia(),
+                postoEntityMysqlJson.getAltitude(),
+                postoEntityMysqlJson.getLatitude(),
+                postoEntityMysqlJson.getLongitude(),
+                postoEntityMysqlJson.getAno_final(),
+                postoEntityMysqlJson.getAno_final(),
+                postoEntityMysqlJson.getIntervalo(),
+                postoEntityMysqlJson.getConsistencia()
         );
     }
 

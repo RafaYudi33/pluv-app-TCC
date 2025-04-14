@@ -1,4 +1,4 @@
-package org.rafs.pluvapp.infra.persistence.entity.relational;
+package org.rafs.pluvapp.infra.persistence.entity.mysqlwjson;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -3,7 +3,8 @@ package org.rafs.pluvapp.infra.persistence.entity.relational;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-@Entity(name = "precipitacao")
+@Entity(name = "precip_relational")
+@Table(name = "precipitacao")
 public class PrecipitacaoEntity {
 
     @Id

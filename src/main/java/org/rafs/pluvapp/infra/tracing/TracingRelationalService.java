@@ -3,8 +3,8 @@ package org.rafs.pluvapp.infra.tracing;
 import com.newrelic.api.agent.Trace;
 import org.rafs.pluvapp.infra.persistence.entity.relational.PostoEntity;
 import org.rafs.pluvapp.infra.persistence.entity.relational.PrecipitacaoEntity;
-import org.rafs.pluvapp.infra.persistence.repository.jpa.PostoRepository;
-import org.rafs.pluvapp.infra.persistence.repository.jpa.PrecipitacaoRepository;
+import org.rafs.pluvapp.infra.persistence.repository.relational.PostoRepository;
+import org.rafs.pluvapp.infra.persistence.repository.relational.PrecipitacaoRepository;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +22,7 @@ public class TracingRelationalService {
         this.precipitacaoRepository = precipitacaoRepository;
     }
 
-    @Trace(dispatcher = true, metricName = "findPostoById/relational")
+    @Trace(dispatcher = true, metricName = "findPostoById/mysqlwjson")
     public PostoEntity traceFindById(String id){
         return postoRepository.findById(id).orElseThrow(()-> new RuntimeException("Posto with id " + id + " not found"));
     }

@@ -4,7 +4,6 @@ import org.rafs.pluvapp.application.gateway.PrecipitacaoGateway;
 import org.rafs.pluvapp.domain.model.Precipitacao;
 import org.rafs.pluvapp.infra.gateway.Mapper.PrecipitacaoMapper;
 import org.rafs.pluvapp.infra.persistence.entity.relational.PrecipitacaoEntity;
-import org.rafs.pluvapp.infra.persistence.repository.jpa.PrecipitacaoRepository;
 import org.rafs.pluvapp.infra.tracing.TracingRelationalService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
