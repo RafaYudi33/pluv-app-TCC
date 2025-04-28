@@ -8,7 +8,7 @@ import jakarta.persistence.Converter;
 import java.util.Map;
 
 @Converter
-public class PrecipitacaoMysqlJsonConverter implements AttributeConverter<Map<String, Integer>, String>  {
+public class PrecipitacaoJsonConverter implements AttributeConverter<Map<String, Integer>, String>  {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 

@@ -71,4 +71,35 @@ public class PostoMapper {
         );
     }
 
+    public Posto toPostoDomainObj(org.rafs.pluvapp.infra.persistence.entity.postgreswjsonb.PostoEntity postoEntityPostgresJsonb){
+        return new Posto(
+                postoEntityPostgresJsonb.getId(),
+                postoEntityPostgresJsonb.getNome(),
+                postoEntityPostgresJsonb.getMunicipio(),
+                postoEntityPostgresJsonb.getBacia(),
+                postoEntityPostgresJsonb.getAltitude(),
+                postoEntityPostgresJsonb.getLatitude(),
+                postoEntityPostgresJsonb.getLongitude(),
+                postoEntityPostgresJsonb.getAno_final(),
+                postoEntityPostgresJsonb.getAno_final(),
+                postoEntityPostgresJsonb.getIntervalo(),
+                postoEntityPostgresJsonb.getConsistencia()
+        );
+    }
+
+    public Posto toPostoDomainObj(org.rafs.pluvapp.infra.persistence.entity.hybrid.PostoEntity posto) {
+        return new Posto(
+                posto.getId(),
+                posto.getNome(),
+                posto.getMunicipio(),
+                posto.getBacia(),
+                posto.getAltitude(),
+                posto.getLatitude(),
+                posto.getLongitude(),
+                posto.getAno_final(),
+                posto.getAno_final(),
+                posto.getIntervalo(),
+                posto.getConsistencia()
+        );
+    }
 }

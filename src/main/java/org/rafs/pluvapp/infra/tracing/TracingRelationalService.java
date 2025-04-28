@@ -22,12 +22,12 @@ public class TracingRelationalService {
         this.precipitacaoRepository = precipitacaoRepository;
     }
 
-    @Trace(dispatcher = true, metricName = "findPostoById/mysqlwjson")
+    @Trace(dispatcher = true, metricName = "findPostoById/relational")
     public PostoEntity traceFindById(String id){
         return postoRepository.findById(id).orElseThrow(()-> new RuntimeException("Posto with id " + id + " not found"));
     }
 
-    @Trace(dispatcher = true, metricName = "FindPrecipitacaoByPostoId/relational")
+    @Trace(dispatcher = true, metricName = "findPrecipitacaoByPostoId/relational")
     public List<PrecipitacaoEntity> traceFindPrecipitacaoByPostoId(String postoId){
         return precipitacaoRepository.findByPostoId(postoId);
     }

@@ -1,4 +1,4 @@
-package org.rafs.pluvapp.infra.persistence.repository.mongo;
+package org.rafs.pluvapp.infra.persistence.repository.nosql;
 
 import org.rafs.pluvapp.infra.persistence.entity.nosql.PostoDocument;
 import org.springframework.context.annotation.Profile;

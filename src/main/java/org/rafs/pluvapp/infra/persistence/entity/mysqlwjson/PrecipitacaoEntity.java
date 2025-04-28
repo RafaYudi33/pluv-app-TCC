@@ -1,8 +1,9 @@
 package org.rafs.pluvapp.infra.persistence.entity.mysqlwjson;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.rafs.pluvapp.infra.converter.PrecipitacaoMysqlJsonConverter;
+import org.rafs.pluvapp.infra.converter.PrecipitacaoJsonConverter;
 
 import java.util.Map;
 
@@ -14,17 +15,21 @@ public class PrecipitacaoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String postoId;
+    @ManyToOne
+    @JoinColumn(name = "posto_id", nullable = false)
+    @JsonIgnore
+    private PostoEntity posto;
+
     private int ano;
     private int mes;
 
-    @Convert(converter = PrecipitacaoMysqlJsonConverter.class)
+    @Convert(converter = PrecipitacaoJsonConverter.class)
     @Column(columnDefinition = "json")
     private Map<String, Integer> dados;
 
-    public PrecipitacaoEntity(Long id, String postoId, int ano, int mes, Map<String, Integer> dados) {
+    public PrecipitacaoEntity(Long id, PostoEntity posto, int ano, int mes, Map<String, Integer> dados) {
         this.id = id;
-        this.postoId = postoId;
+        this.posto = posto;
         this.ano = ano;
         this.mes = mes;
         this.dados = dados;
@@ -32,12 +37,12 @@ public class PrecipitacaoEntity {
 
     public PrecipitacaoEntity() {}
 
-    public String getPostoId() {
-        return postoId;
+    public PostoEntity getPosto() {
+        return posto;
     }
 
-    public void setPostoId(String postoId) {
-        this.postoId = postoId;
+    public void setPosto(PostoEntity posto) {
+        this.posto = posto;
     }
 
     public int getAno() {

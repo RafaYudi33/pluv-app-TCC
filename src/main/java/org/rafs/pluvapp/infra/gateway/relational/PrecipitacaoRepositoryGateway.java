@@ -25,6 +25,6 @@ public class PrecipitacaoRepositoryGateway implements PrecipitacaoGateway {
     @Override
     public List<Precipitacao> findByPostoId(String postoId) {
         List<PrecipitacaoEntity> precipitacoes = tracingRelationalService.traceFindPrecipitacaoByPostoId(postoId);
-        return precipitacaoMapper.toListPrecipitacaoDomainObj(precipitacoes);
+        return precipitacaoMapper.toListPrecipitacaoDomainObjFromRelational(precipitacoes);
     }
 }

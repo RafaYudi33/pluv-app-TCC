@@ -22,7 +22,7 @@ public class PostoRepositoryGateway implements PostoGateway {
 
     @Override
     public Posto findById(String id) {
-        PostoDocument postoDocument = tracingNoSqlService.findById(id);
+        PostoDocument postoDocument = tracingNoSqlService.traceFindById(id);
         return postoMapper.toPostoDomainObj(postoDocument);
     }
 }

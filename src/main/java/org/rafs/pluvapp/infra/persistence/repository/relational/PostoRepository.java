@@ -8,7 +8,7 @@ import java.util.Optional;
 
 
 @Repository
-@Profile({"relational", "mysqlwjson"})
+@Profile("relational")
 public interface PostoRepository extends JpaRepository<PostoEntity, Long> {
     public Optional<PostoEntity> findById(String id);
 }
