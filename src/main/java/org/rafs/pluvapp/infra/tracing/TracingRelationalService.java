@@ -1,6 +1,7 @@
 package org.rafs.pluvapp.infra.tracing;
 
 import com.newrelic.api.agent.Trace;
+import org.rafs.pluvapp.infra.persistence.dto.PrecipitacaoWithPostoId;
 import org.rafs.pluvapp.infra.persistence.entity.relational.PostoEntity;
 import org.rafs.pluvapp.infra.persistence.entity.relational.PrecipitacaoEntity;
 import org.rafs.pluvapp.infra.persistence.repository.relational.PostoRepository;
@@ -32,4 +33,8 @@ public class TracingRelationalService {
         return precipitacaoRepository.findByPostoId(postoId);
     }
 
+    @Trace(dispatcher = true, metricName = "findPrecipitacaoByPostoAno/relational")
+    public List<PrecipitacaoWithPostoId> traceFindPrecipitacaoByAno(int ano, String postoId) {
+        return precipitacaoRepository.findByPostoAno(ano, postoId);
+    }
 }

@@ -4,6 +4,7 @@ import org.rafs.pluvapp.application.gateway.PrecipitacaoGateway;
 import org.rafs.pluvapp.domain.model.Precipitacao;
 import org.rafs.pluvapp.infra.gateway.Mapper.PrecipitacaoMapper;
 import org.rafs.pluvapp.infra.integration.hybrid.PrecipitacaoWithPostoEntity;
+import org.rafs.pluvapp.infra.persistence.dto.PrecipitacaoWithPostoId;
 import org.rafs.pluvapp.infra.tracing.TracingHybridService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -26,5 +27,10 @@ public class PrecipitacaoRepositoryGateway implements PrecipitacaoGateway {
     public List<Precipitacao> findByPostoId(String postoId) {
         List<PrecipitacaoWithPostoEntity> precipitacaoWithPostoList = tracingHybridService.traceFindPrecipitacaoByPostoId(postoId);
         return precipitacaoMapper.toListPrecipitacaoDomainObjFromHybridIntegrationObj(precipitacaoWithPostoList);
+    }
+
+    @Override
+    public List<PrecipitacaoWithPostoId> findByPostoAno(int ano, String postoId) {
+        return List.of();
     }
 }

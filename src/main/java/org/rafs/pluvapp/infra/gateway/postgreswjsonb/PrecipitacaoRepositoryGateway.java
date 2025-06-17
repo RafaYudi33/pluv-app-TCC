@@ -3,6 +3,7 @@ package org.rafs.pluvapp.infra.gateway.postgreswjsonb;
 import org.rafs.pluvapp.application.gateway.PrecipitacaoGateway;
 import org.rafs.pluvapp.domain.model.Precipitacao;
 import org.rafs.pluvapp.infra.gateway.Mapper.PrecipitacaoMapper;
+import org.rafs.pluvapp.infra.persistence.dto.PrecipitacaoWithPostoId;
 import org.rafs.pluvapp.infra.persistence.entity.postgreswjsonb.PrecipitacaoEntity;
 import org.rafs.pluvapp.infra.tracing.TracingPostgresWjsonbService;
 import org.springframework.context.annotation.Profile;
@@ -26,6 +27,11 @@ public class PrecipitacaoRepositoryGateway implements PrecipitacaoGateway {
     public List<Precipitacao> findByPostoId(String postoId) {
         List<PrecipitacaoEntity> precipitacaoList = tracingPostgresWjsonbService.traceFindPrecipitacaoByPostoId(postoId);
         return precipitacaoMapper.toListPrecipitacaoDomainObjFromPostgresJsonb(precipitacaoList);
+    }
+
+    @Override
+    public List<PrecipitacaoWithPostoId> findByPostoAno(int ano, String postoId) {
+        return List.of();
     }
 
 }

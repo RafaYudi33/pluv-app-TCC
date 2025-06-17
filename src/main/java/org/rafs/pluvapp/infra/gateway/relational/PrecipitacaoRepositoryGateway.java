@@ -3,6 +3,7 @@ package org.rafs.pluvapp.infra.gateway.relational;
 import org.rafs.pluvapp.application.gateway.PrecipitacaoGateway;
 import org.rafs.pluvapp.domain.model.Precipitacao;
 import org.rafs.pluvapp.infra.gateway.Mapper.PrecipitacaoMapper;
+import org.rafs.pluvapp.infra.persistence.dto.PrecipitacaoWithPostoId;
 import org.rafs.pluvapp.infra.persistence.entity.relational.PrecipitacaoEntity;
 import org.rafs.pluvapp.infra.tracing.TracingRelationalService;
 import org.springframework.context.annotation.Profile;
@@ -26,5 +27,10 @@ public class PrecipitacaoRepositoryGateway implements PrecipitacaoGateway {
     public List<Precipitacao> findByPostoId(String postoId) {
         List<PrecipitacaoEntity> precipitacoes = tracingRelationalService.traceFindPrecipitacaoByPostoId(postoId);
         return precipitacaoMapper.toListPrecipitacaoDomainObjFromRelational(precipitacoes);
+    }
+
+    @Override
+    public List<PrecipitacaoWithPostoId> findByPostoAno(int ano, String postoId) {
+        return tracingRelationalService.traceFindPrecipitacaoByAno(ano,postoId);
     }
 }

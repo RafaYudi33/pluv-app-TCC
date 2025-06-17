@@ -2,6 +2,7 @@ package org.rafs.pluvapp.infra.tracing;
 
 import com.newrelic.api.agent.Trace;
 import org.rafs.pluvapp.infra.integration.nosql.PrecipitacaoWithPostoDocument;
+import org.rafs.pluvapp.infra.persistence.dto.PrecipitacaoWithPostoId;
 import org.rafs.pluvapp.infra.persistence.entity.nosql.PostoDocument;
 import org.rafs.pluvapp.infra.persistence.entity.hybrid.PrecipitacaoDocument;
 import org.rafs.pluvapp.infra.persistence.repository.nosql.PostoRepository;
@@ -44,5 +45,10 @@ public class TracingNoSqlService {
                         posto
                 ))
                 .toList();
+    }
+
+    @Trace(dispatcher = true, metricName = "findPrecipitacaoByPostoAno/nosql")
+    public List<PrecipitacaoWithPostoId> traceFindPrecipitacaoByPostoAno(int ano, String postoId) {
+       return precipitacaoRepository.findByPostoAno(ano, postoId);
     }
 }
